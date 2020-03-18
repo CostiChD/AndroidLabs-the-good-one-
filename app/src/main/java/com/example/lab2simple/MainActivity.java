@@ -132,6 +132,10 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
+
+    /*
+    Lab4, primul ex si ultimul ex
+     */
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem menuItem) {
         AlertDialog builder = new AlertDialog.Builder(this).create();
