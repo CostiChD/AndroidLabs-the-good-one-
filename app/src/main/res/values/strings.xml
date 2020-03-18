@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Lab2Simple</string>
+    <string-array name="array_technology">
+        <item>Superstar</item>
+        <item>Ultraboost</item>
+        <item>Ultraboost 19</item>
+        <item>Ultraboost 20</item>
+    </string-array>
+</resources>
