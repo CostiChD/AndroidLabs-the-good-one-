@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@+id/About"
-        android:title="About le papuc" />
+    <item android:id="@+id/about"
+        android:title="About our shoes" />
     <item android:id="@+id/help"
-        android:title="Help da papuc" />
+        android:title="Do you need help, rly?" />
 </menu>
