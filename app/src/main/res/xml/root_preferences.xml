@@ -1,0 +1,19 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <PreferenceCategory android:title="Button">
+
+        <SwitchPreference
+            android:defaultValue="false"
+            android:key="button_preference_1"
+            android:title="Show button?" />
+    </PreferenceCategory>
+    <PreferenceCategory android:title="Text">
+
+        <EditTextPreference
+            android:defaultValue="Default value"
+            android:key="edit_text_preference_1"
+            android:selectAllOnFocus="true"
+            android:singleLine="true"
+            android:title="Not implemented yet!!!" />
+    </PreferenceCategory>
+</PreferenceScreen>

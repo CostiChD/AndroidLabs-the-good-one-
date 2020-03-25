@@ -15,9 +15,17 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -78,6 +86,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStart() {
         super.onStart();
+        loadLocalSettings();
         Log.d("lifecycle", "onStart invoked");
     }
 
@@ -96,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
+        saveLocalSettings();
         Log.d("lifecycle", "onStop invoked");
     }
 
@@ -149,6 +159,10 @@ public class MainActivity extends AppCompatActivity {
         } else if (menuItem.getItemId() == R.id.help) {
             builder.setTitle("Help");
             builder.setMessage("What do you need help for, bro?");
+        } else if (menuItem.getItemId() == R.id.settings) {
+            Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
+            return true;
         } else {
             super.onOptionsItemSelected(menuItem);
         }
@@ -173,5 +187,49 @@ public class MainActivity extends AppCompatActivity {
 
         intent.putExtra(EXTRA_MESSAGE, shoesDescription.getText().toString());
         startActivity(intent);
+    }
+
+    private void loadLocalSettings() {
+        String textToLoad = getLocalSettings();
+        TextView textView = (TextView) findViewById(R.id.shoesDescription);
+        textView.setText(String.format("%s(from local storage)", textToLoad));
+    }
+
+    private void saveLocalSettings() {
+        try {
+            OutputStreamWriter outputStreamWriter = new OutputStreamWriter(this.openFileOutput(
+                    "localSettings.txt", MODE_PRIVATE));
+            String text = ((TextView) findViewById(R.id.shoesDescription)).getText().toString();
+            outputStreamWriter.write(text);
+            outputStreamWriter.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String getLocalSettings() {
+        FileInputStream fis = null;
+        try {
+            File localSettingsFile = new File("localSettings.txt");
+            if (!localSettingsFile.exists()) {
+                saveLocalSettings();
+            }
+
+            fis = openFileInput("localSettings.txt");
+            InputStreamReader isr = new InputStreamReader(fis);
+            BufferedReader bufferedReader = new BufferedReader(isr);
+            StringBuilder sb = new StringBuilder();
+            String line;
+
+            while ((line = bufferedReader.readLine()) != null) {
+                sb.append(line);
+            }
+
+            return sb.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+
+            return "";
+        }
     }
 }
