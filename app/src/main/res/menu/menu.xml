@@ -4,6 +4,10 @@
         android:title="About our shoes" />
     <item android:id="@+id/help"
         android:title="Do you need help, rly?" />
+    <item android:id="@+id/sensors"
+        android:title="Sensors data" />
+    <item android:id="@+id/location"
+        android:title="Location" />
     <item android:id="@+id/settings"
         android:title="Settings" />
 </menu>

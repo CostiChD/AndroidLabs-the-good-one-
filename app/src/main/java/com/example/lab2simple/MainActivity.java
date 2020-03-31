@@ -15,14 +15,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
@@ -161,6 +159,14 @@ public class MainActivity extends AppCompatActivity {
             builder.setMessage("What do you need help for, bro?");
         } else if (menuItem.getItemId() == R.id.settings) {
             Intent intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
+            return true;
+        } else if (menuItem.getItemId() == R.id.sensors) {
+            Intent intent = new Intent(this, SensorsDisplayActivity.class);
+            startActivity(intent);
+            return true;
+        } else if (menuItem.getItemId() == R.id.location) {
+            Intent intent = new Intent(this, GPSCoordinatesActivity.class);
             startActivity(intent);
             return true;
         } else {
