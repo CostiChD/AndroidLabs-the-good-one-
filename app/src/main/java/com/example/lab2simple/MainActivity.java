@@ -169,6 +169,10 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, GPSCoordinatesActivity.class);
             startActivity(intent);
             return true;
+        } else if (menuItem.getItemId() == R.id.camera) {
+            Intent intent = new Intent(this, CameraActivity.class);
+            startActivity(intent);
+            return true;
         } else {
             super.onOptionsItemSelected(menuItem);
         }
